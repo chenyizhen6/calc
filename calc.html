@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculate</title>
+    <style>
+        body{
+            background-image:url("Wooden background.jpeg");
+            background-size:cover;
+        }
+
+        *{
+            font-family:"Lucida Console";
+            font-size: 40px;
+        }
+
+        /*  table-layout:fixed   加快table的顯示速度;
+            cursor  改變滑鼠游標的形狀;
+            border-radius  圓角設定:  
+            border-style  指定邊框的樣式;
+            border-spacing: px  表格欄位邊框間的距離(僅適用於邊框設置為分離模式的情況);
+            [ @ border-collapse 將表格欄位的邊框距離加大或是合併在一起 ]  */
+        table{
+            width:400px;
+            height:430px;
+            margin-left:auto; 
+            margin-right:auto;
+            background-color:rgb(252, 218, 196);
+            border-width:15px;
+            border-color: rgba(109, 66, 37, 0.925);
+            border-style:ridge;
+            border-spacing:6px;
+            border-radius: 0px 0px 15px 15px;
+            box-shadow:15px 15px 5px 6px rgba(5, 5, 5, 0.219);
+            cursor: pointer;
+            text-align: center;
+            table-layout: fixed;
+        }
+
+        /*  border-width 邊框寬度  */
+        p{
+            width:386px;
+            height:100px; 
+            margin: auto;
+            vertical-align: middle;
+            border-style:ridge;
+            border-color:rgba(109, 66, 37, 0.925);
+            border-radius: 15px 15px 0px 0px;
+            background-color:rgb(255, 243, 235);
+            line-height: 300%;
+            text-align: right;
+            color: rgb(80, 46, 15);
+            box-shadow:inset 5px 6px 8px 8px rgba(5, 5, 5, 0.219);
+            border-width: 7px;
+        
+        }
+
+        .equal,.four,.nine{
+            background-color:rgb(245, 72, 72);
+            color:rgb(255, 255, 255); 
+            
+          }
+
+        .divisor,.two,.add,.eight{
+            background-color:rgba(75, 36, 10, 0.925);
+            color:rgb(255, 255, 255);
+        }
+
+        .zero,.five,.seven,.mult,.three{
+            background-color:rgb(247, 201, 77);
+            color:rgb(255, 255, 255);
+        }
+        
+
+        .one,.six,.sub,.dot{
+            background-color: rgb(236, 229, 229);
+            color:rgb(80, 46, 15);
+        }
+
+        /* background:linear-gradient("角度值deg", 起始顏色 , 終止顏色) 利用角度調整的線性漸層效果 */
+        .del{
+            background:linear-gradient(160deg,rgba(138, 37, 37, 0.952),rgb(255, 83, 83));
+            color:rgb(255, 255, 255);
+            }
+
+        td:active{
+            background-color:rgb(80, 80, 77);
+        }
+        
+
+       </style>
+</head>
+<body>
+    <p id="input">0</p> 
+        
+    <table>
+        <tr>    
+            <td colspan="2" class="del">C</td>
+            <td class="divisor">/</td>
+            <td class="mult">*</td>
+        </tr>
+        <tr>
+            <td class="seven">7</td>
+            <td class="eight">8</td>
+            <td class="nine">9</td>
+            <td class="sub">-</td>
+        </tr>
+        <tr>
+            <td class="four">4</td>
+            <td class="five">5</td>
+            <td class="six">6</td>
+            <td class="add">+</td>
+        </tr>
+        <tr>
+            <td class="one">1</td>
+            <td class="two">2</td>
+            <td class="three">3</td>
+            <td rowspan="2" class="equal">=</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="zero">0</td>
+            <td class="dot">.</td>
+        </tr>
+    </table>
+
+<script>
+    const input = document.getElementById("input");
+    const td = document.getElementsByTagName("td");
+        for(let i=0;i<td.length;i++){
+            td[i].onclick = function(){
+                console.log( this.innerText );
+                    if( this.innerText == "C" )			input.innerText = "0";
+                    else if( this.innerText == "=" )	input.innerText = eval(input.innerText);
+                    else{
+                        if(input.innerText == "0")	input.innerText = this.innerText;
+                        else	input.insertAdjacentHTML("beforeend", this.innerText);
+                    }
+            }
+        }
+</script>
+            
+</body>
+</html>
